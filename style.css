@@ -1,0 +1,121 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --border: #334155;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+#app { max-width: 700px; margin: 0 auto; padding: 24px; }
+
+header { text-align: center; margin-bottom: 32px; }
+header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+.subtitle { color: var(--muted); font-size: 0.95rem; }
+
+main { display: grid; gap: 24px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+h2 { font-size: 1.1rem; margin-bottom: 16px; color: var(--accent); font-weight: 600; }
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--accent); color: #000; }
+.btn.primary:hover { background: var(--accent-hover); }
+.btn.secondary { background: var(--border); color: var(--text); }
+.btn.secondary:hover { background: #475569; }
+.btn.small { padding: 6px 14px; font-size: 0.85rem; }
+.btn.timer-btn { padding: 14px 24px; font-size: 1.1rem; }
+.btn.toggle { background: var(--border); color: var(--text); }
+.btn.toggle.active { background: var(--success); color: #fff; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.connect-panel .btn { width: 100%; margin-bottom: 12px; }
+.timer-panel .timer-controls { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+
+.status { margin-top: 10px; font-size: 0.9rem; color: var(--muted); min-height: 1.2em; }
+.hidden { display: none !important; }
+.device-info { margin-top: 12px; font-size: 0.9rem; color: var(--muted); }
+.device-info div { margin-bottom: 4px; }
+
+/* Cube visualization */
+#cubeVisualization {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-width: 260px;
+  margin: 0 auto 16px;
+  perspective: 800px;
+}
+.facelet {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700;
+  background: #0f172a;
+  color: var(--text);
+}
+.facelet.solved { background: var(--accent); color: #000; }
+
+.controls { display: flex; gap: 10px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+
+/* Timer */
+.timer-panel { text-align: center; }
+#timerDisplay { font-size: 4.5rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); margin: 24px 0; }
+.move-display { font-size: 1.5rem; color: var(--muted); margin: 12px 0; font-family: monospace; font-weight: 700; }
+.solve-info { color: var(--muted); font-size: 0.95rem; margin-top: 12px; }
+
+/* Stats */
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.stat { background: #0f172a; border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+.stat-value { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+.stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* History */
+#solveList { list-style: none; padding: 0; }
+#solveList li {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  display: flex; justify-content: space-between; gap: 12px;
+}
+#solveList li:last-child { border-bottom: none; }
+.solve-time { font-family: monospace; font-weight: 700; color: var(--accent); }
+.solve-date { color: var(--muted); font-size: 0.85rem; }
+
+footer { text-align: center; margin-top: 32px; color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 480px) {
+  #app { padding: 16px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  #timerDisplay { font-size: 3rem; }
+}

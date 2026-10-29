@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moyu Cube — Smart Cube Timer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Moyu Cube</h1>
+    <div class="subtitle">Connect to Moyu smart cubes via Bluetooth</div>
+  </header>
+
+  <main>
+    <!-- Connection panel -->
+    <section class="card connect-panel">
+      <h2>Connect Cube</h2>
+      <button id="connectBtn" class="btn primary">Connect to Cube</button>
+      <div id="deviceInfo" class="device-info hidden">
+        <div><strong>Name:</strong> <span id="devName"></span></div>
+        <div><strong>Address:</strong> <span id="devAddr"></span></div>
+        <div><strong>Model:</strong> <span id="devModel"></span></div>
+        <div><strong>Battery:</strong> <span id="devBattery">--</span>%</div>
+        <button id="refreshBtn" class="btn small">Refresh</button>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <!-- Live cube state -->
+    <section class="card cube-panel hidden" id="cubePanel">
+      <h2>Live Cube State</h2>
+      <div id="cubeVisualization"></div>
+      <div id="faceletState" class="facelet-state hidden"></div>
+      <div class="controls">
+        <button id="readFaceletsBtn" class="btn small">Read Facelets</button>
+        <button id="batteryBtn" class="btn small">Battery</button>
+        <button id="gyroBtn" class="btn small toggle">Gyro: Off</button>
+      </div>
+    </section>
+
+    <!-- Timer -->
+    <section class="card timer-panel hidden" id="timerPanel">
+      <h2>Timer</h2>
+      <div id="timerDisplay">0.000</div>
+      <div class="timer-controls">
+        <button id="startStopBtn" class="btn timer-btn">Start</button>
+        <button id="resetBtn" class="btn timer-btn">Reset</button>
+      </div>
+      <div id="lastSolve" class="solve-info">Last solve: --</div>
+      <div id="currentMove" class="move-display">--</div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="card stats-panel hidden" id="statsPanel">
+      <h2>Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-value" id="statAvg5">--</div><div class="stat-label">Avg of 5</div></div>
+        <div class="stat"><div class="stat-value" id="statAvg12">--</div><div class="stat-label">Avg of 12</div></div>
+        <div class="stat"><div class="stat-value" id="statBest">--</div><div class="stat-label">Best</div></div>
+        <div class="stat"><div class="stat-value" id="statCount">0</div><div class="stat-label">Solves</div></div>
+      </div>
+    </section>
+
+    <!-- Solve history -->
+    <section class="card history-panel hidden" id="historyPanel">
+      <h2>Solve History</h2>
+      <ol id="solveList"></ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Moyu Cube &mdash; connects to Moyu WeiLong V10 AI and compatible smart cubes via Web Bluetooth.</p>
+  </footer>
+</div>
+<script src="cube-protocol.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
